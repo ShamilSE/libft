@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mismene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,28 +12,16 @@
 
 #include "libft.h"
 
-void	*ft_memmove(void *destination, const void *source, size_t n)
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	const unsigned char	*s;
-	const unsigned char	*last_s;
-	unsigned char		*d;
-	unsigned char		*last_d;
+	t_list	*p;
 
-	d = destination;
-	s = source;
-	if (destination == NULL && source == NULL)
-		return (NULL);
-	if (d < s)
+	while (*lst)
 	{
-		while (n--)
-			*d++ = *s++;
+		p = (*lst)->next;
+		del((*lst)->content);
+		free(*lst);
+		*lst = p;
 	}
-	else
-	{
-		last_s = s + (n - 1);
-		last_d = d + (n - 1);
-		while (n--)
-			*last_d-- = *last_s--;
-	}
-	return (destination);
+	*lst = NULL;
 }

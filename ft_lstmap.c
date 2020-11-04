@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mismene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,28 +12,30 @@
 
 #include "libft.h"
 
-void	*ft_memmove(void *destination, const void *source, size_t n)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	const unsigned char	*s;
-	const unsigned char	*last_s;
-	unsigned char		*d;
-	unsigned char		*last_d;
+	t_list	*new_lst;
+	t_list	*new_elem;
 
-	d = destination;
-	s = source;
-	if (destination == NULL && source == NULL)
+	if (!lst || !f)
 		return (NULL);
-	if (d < s)
+	if (!(new_elem = ft_lstnew(f(lst->content))))
 	{
-		while (n--)
-			*d++ = *s++;
+		ft_lstclear(&lst, del);
+		return (NULL);
 	}
-	else
+	new_lst = new_elem;
+	lst = lst->next;
+	while (lst)
 	{
-		last_s = s + (n - 1);
-		last_d = d + (n - 1);
-		while (n--)
-			*last_d-- = *last_s--;
+		if (!(new_elem = ft_lstnew(f(lst->content))))
+		{
+			ft_lstclear(&lst, del);
+			ft_lstclear(&new_lst, del);
+			break ;
+		}
+		lst = lst->next;
+		ft_lstadd_back(&new_lst, new_elem);
 	}
-	return (destination);
+	return (new_lst);
 }

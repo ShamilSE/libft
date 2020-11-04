@@ -1,15 +1,21 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mismene <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 11:57:33 by mismene           #+#    #+#             */
+/*   Updated: 2020/10/30 11:57:40 by mismene          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-** ft_strrchr: возвращает указатель на последнее
-** вхождение младшего байта аргумента c в строке,
-** на которую указывает str.
-*/
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	const char *tmp;
-	int i;
+	const char	*tmp;
+	int			i;
 
 	i = 0;
 	tmp = NULL;
@@ -19,6 +25,8 @@ char	*ft_strrchr(const char *s, int c)
 			tmp = &s[i];
 		++i;
 	}
+	if (c == '\0')
+		return (&((char *)s)[i]);
 	if (tmp != NULL)
 		return ((char *)tmp);
 	return (NULL);

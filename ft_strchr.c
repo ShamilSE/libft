@@ -1,17 +1,24 @@
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mismene <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 11:57:33 by mismene           #+#    #+#             */
+/*   Updated: 2020/10/30 11:57:40 by mismene          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-** ft_strchr: озвращает указатель на первое
-** вхождение символа c в строку, на которую
-** указывает s.
-*/
+#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	const char *tmp;
-	int i;
+	const char	*tmp;
+	int			i;
 
 	i = 0;
+	tmp = NULL;
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
@@ -21,5 +28,7 @@ char	*ft_strchr(const char *s, int c)
 		}
 		++i;
 	}
+	if (c == '\0')
+		return (&((char *)s)[i]);
 	return (NULL);
 }

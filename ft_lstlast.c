@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mismene <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,28 +12,17 @@
 
 #include "libft.h"
 
-void	*ft_memmove(void *destination, const void *source, size_t n)
+t_list	*ft_lstlast(t_list *lst)
 {
-	const unsigned char	*s;
-	const unsigned char	*last_s;
-	unsigned char		*d;
-	unsigned char		*last_d;
+	t_list	*last;
+	t_list	*p;
 
-	d = destination;
-	s = source;
-	if (destination == NULL && source == NULL)
-		return (NULL);
-	if (d < s)
+	last = lst;
+	p = last;
+	while (last != NULL)
 	{
-		while (n--)
-			*d++ = *s++;
+		p = last;
+		last = last->next;
 	}
-	else
-	{
-		last_s = s + (n - 1);
-		last_d = d + (n - 1);
-		while (n--)
-			*last_d-- = *last_s--;
-	}
-	return (destination);
+	return (p);
 }

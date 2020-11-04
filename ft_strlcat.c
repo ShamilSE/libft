@@ -1,7 +1,18 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mismene <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/10/30 11:57:33 by mismene           #+#    #+#             */
+/*   Updated: 2020/10/30 11:57:40 by mismene          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-size_t strlcat(char * restrict dst, const char * restrict src, size_t dsrsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	len;
@@ -12,7 +23,7 @@ size_t strlcat(char * restrict dst, const char * restrict src, size_t dsrsize)
 	while (*dst)
 		dst++;
 	i = 0;
-	while ((i < size - (len - ft_str(src)) - 1) && src[i])
+	while ((i < size - (len - ft_strlen(src)) - 1) && src[i])
 	{
 		dst[i] = src[i];
 		i++;
