@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+// copy size symbols of src to dst
+
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	char		*d;
