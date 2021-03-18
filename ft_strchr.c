@@ -12,6 +12,8 @@
 
 #include "libft.h"
 
+// entry c in s
+
 char	*ft_strchr(const char *s, int c)
 {
 	const char	*tmp;
