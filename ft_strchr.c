@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-// entry c in s
+// return pointer to first entry c to s
 
 char	*ft_strchr(const char *s, int c)
 {
