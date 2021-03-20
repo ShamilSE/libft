@@ -12,6 +12,7 @@
 
 #include "libft.h"
 
+// return string with allocated memory
 char	*ft_strdup(const char *s1)
 {
 	char *str;
